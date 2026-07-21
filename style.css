@@ -252,6 +252,11 @@ a {
   font-size: 0.9rem;
 }
 
+.btn--danger {
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
 .hero__cta {
   font-size: 1.05rem;
 }
@@ -408,18 +413,6 @@ a {
   gap: 0.55rem;
 }
 
-.coupon-card__code {
-  font-family: "Baloo 2", monospace;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  font-size: 1.05rem;
-  color: var(--navy);
-  border: 1.5px dashed var(--line);
-  border-radius: 10px;
-  padding: 0.45rem 0.75rem;
-  width: fit-content;
-}
-
 .progress {
   height: 8px;
   border-radius: 999px;
@@ -472,7 +465,8 @@ form#registration-form {
   color: var(--navy);
 }
 
-.field input[type="text"] {
+.field input[type="text"],
+.field input[type="password"] {
   font-family: inherit;
   font-size: 1rem;
   font-weight: 400;
@@ -483,73 +477,10 @@ form#registration-form {
   color: var(--ink);
 }
 
-.field input[type="text"]:focus {
+.field input[type="text"]:focus,
+.field input[type="password"]:focus {
   outline: 2px solid var(--blue);
   outline-offset: 1px;
-}
-
-.field--coupon {
-  border: none;
-  padding: 0;
-  margin: 0;
-}
-
-.field--coupon legend {
-  padding: 0;
-  margin-bottom: 0.6rem;
-}
-
-.coupon-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-}
-
-.coupon-pill {
-  position: relative;
-}
-
-.coupon-pill input {
-  position: absolute;
-  opacity: 0;
-  inset: 0;
-  cursor: pointer;
-}
-
-.coupon-pill span {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--navy);
-  border: 1.5px solid var(--line);
-  border-radius: 999px;
-  padding: 0.55rem 1rem;
-  background: var(--cream);
-  transition: border-color 0.15s ease, background 0.15s ease;
-}
-
-.coupon-pill span em {
-  font-style: normal;
-  color: var(--muted);
-  font-size: 0.78rem;
-}
-
-.coupon-pill input:checked + span {
-  border-color: var(--blue);
-  background: #f2e9f7;
-}
-
-.coupon-pill input:disabled + span {
-  opacity: 0.45;
-  text-decoration: line-through;
-  cursor: not-allowed;
-}
-
-.coupon-pill input:focus-visible + span {
-  outline: 2px solid var(--blue);
-  outline-offset: 2px;
 }
 
 #submit-btn {
@@ -623,4 +554,167 @@ form#registration-form {
   #submit-btn {
     align-self: stretch;
   }
+}
+
+/* Admin */
+
+.admin-body {
+  background: var(--cream);
+  min-height: 100vh;
+}
+
+.admin-gate {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.admin-gate__card {
+  width: 100%;
+  max-width: 22rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  text-align: center;
+}
+
+.admin-gate__card p {
+  margin: -0.75rem 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.admin-panel {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+.admin-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.admin-header__subtitle {
+  margin: 0.25rem 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.admin-header__actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.admin-header__actions .btn {
+  padding: 0.6rem 1.1rem;
+  font-size: 0.88rem;
+}
+
+.admin-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.admin-summary__card {
+  position: relative;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.admin-summary__card--total {
+  background: var(--navy);
+  border-color: var(--navy);
+}
+
+.admin-summary__card--total .admin-summary__value,
+.admin-summary__card--total .admin-summary__label {
+  color: var(--cream);
+}
+
+.admin-summary__value {
+  font-family: "Baloo 2", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.admin-summary__label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.admin-summary__reset {
+  align-self: flex-start;
+  margin-top: 0.4rem;
+  border: none;
+  background: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--danger);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.admin-table-wrap {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 0.5rem;
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.admin-table th {
+  text-align: left;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+.admin-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+}
+
+.admin-table tr:last-child td {
+  border-bottom: none;
+}
+
+.admin-empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 2rem;
+  margin: 0;
 }

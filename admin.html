@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin · Inscrições — Negócios à Mesa</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="admin-body">
+
+<div class="admin-gate" id="gate">
+  <form class="admin-gate__card" id="gate-form">
+    <h1>Área restrita</h1>
+    <p>Informe a chave de acesso para ver as inscrições.</p>
+    <label class="field">
+      <span>Chave de acesso</span>
+      <input type="password" id="admin-key" autocomplete="current-password" required>
+    </label>
+    <button type="submit" class="btn btn--primary">Entrar</button>
+    <p class="form-message" id="gate-message" role="status" aria-live="polite"></p>
+  </form>
+</div>
+
+<div class="admin-panel" id="panel" hidden>
+  <header class="admin-header">
+    <div>
+      <h1>Inscrições</h1>
+      <p class="admin-header__subtitle">Negócios à Mesa &middot; 29/07 &middot; Cabaña Del Primo</p>
+    </div>
+    <div class="admin-header__actions">
+      <button type="button" class="btn btn--outline" id="refresh-btn">Atualizar</button>
+      <button type="button" class="btn btn--outline" id="export-btn">Exportar CSV</button>
+      <button type="button" class="btn btn--outline btn--danger" id="reset-all-btn">Resetar tudo</button>
+      <button type="button" class="btn btn--outline" id="logout-btn">Sair</button>
+    </div>
+  </header>
+
+  <div class="admin-summary" id="summary"></div>
+
+  <div class="admin-table-wrap">
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nome</th>
+          <th>Empresa</th>
+          <th>Apoiador</th>
+          <th>Inscrito em</th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+    <p class="admin-empty" id="empty-message" hidden>Nenhuma inscrição ainda.</p>
+  </div>
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>

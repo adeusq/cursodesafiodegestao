@@ -24,21 +24,6 @@
       if (!info) return;
       updateCard(card, info);
     });
-
-    document.querySelectorAll("[data-pill-remaining]").forEach((el) => {
-      const code = el.dataset.pillRemaining;
-      const info = data[code];
-      if (!info) return;
-      const input = el.closest(".coupon-pill").querySelector("input");
-      if (info.remaining <= 0) {
-        el.textContent = "esgotado";
-        input.disabled = true;
-        if (input.checked) input.checked = false;
-      } else {
-        el.textContent = `${info.remaining} de ${LIMIT} vagas`;
-        input.disabled = false;
-      }
-    });
   }
 
   function updateCard(card, info) {
@@ -61,7 +46,7 @@
       card.classList.remove("is-sold-out");
       if (button) {
         button.disabled = false;
-        button.textContent = "Usar este cupom";
+        button.textContent = "Já tenho o código";
       }
     }
   }
@@ -70,13 +55,8 @@
     const button = card.querySelector("[data-use-coupon]");
     if (!button) return;
     button.addEventListener("click", () => {
-      const code = card.dataset.coupon;
-      const input = form.querySelector(`input[name="coupon"][value="${code}"]`);
-      if (input && !input.disabled) {
-        input.checked = true;
-      }
       document.getElementById("inscricao").scrollIntoView({ behavior: "smooth", block: "start" });
-      document.getElementById("nome").focus({ preventScroll: true });
+      document.getElementById("coupon").focus({ preventScroll: true });
     });
   });
 
@@ -95,14 +75,14 @@
 
     const nome = document.getElementById("nome").value.trim();
     const empresa = document.getElementById("empresa").value.trim();
-    const couponInput = form.querySelector('input[name="coupon"]:checked');
+    const coupon = document.getElementById("coupon").value.trim();
 
     if (!nome) {
       setMessage("Informe seu nome completo.", "error");
       return;
     }
-    if (!couponInput) {
-      setMessage("Selecione o cupom do apoiador.", "error");
+    if (!coupon) {
+      setMessage("Informe o código do cupom.", "error");
       return;
     }
 
@@ -113,7 +93,7 @@
       const res = await fetch("/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nome, empresa, coupon: couponInput.value }),
+        body: JSON.stringify({ nome, empresa, coupon }),
       });
       const data = await res.json();
 
