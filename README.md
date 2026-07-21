@@ -6,7 +6,7 @@ Cada apoiador tem sua **própria página** com limite de **10 vagas**:
 
 | Apoiador | Página | Cupom interno | Email do responsável |
 |---|---|---|---|
-| #hashtag entrega | `/hashtag.html` | `HASHTAG10` | `adeusqm@gmail.com` *(temporário, para teste)* |
+| #hashtag entrega | `/hashtag.html` | `HASHTAG10` | `davi.duarte@hashtagentrega.com` |
 | Liberdata | `/liberdata.html` | `LIBERDATA10` | `setormarketing.liber@gmail.com` |
 | Suppri | `/suppri.html` | `SUPPRI10` | `pedro.maranhao@usesuppri.com.br` |
 

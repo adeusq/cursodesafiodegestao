@@ -8,7 +8,7 @@ const COUPONS = {
 };
 
 const COUPON_CONTACTS = {
-  HASHTAG10: "adeusqm@gmail.com",
+  HASHTAG10: "davi.duarte@hashtagentrega.com",
   LIBERDATA10: "setormarketing.liber@gmail.com",
   SUPPRI10: "pedro.maranhao@usesuppri.com.br",
 };
