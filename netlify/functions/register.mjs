@@ -1,9 +1,16 @@
 import { getStore } from "@netlify/blobs";
+import nodemailer from "nodemailer";
 
 const COUPONS = {
   HASHTAG10: { label: "#hashtag entrega", limit: 10 },
-  LIBERDATA10: { label: "LiberData", limit: 10 },
+  LIBERDATA10: { label: "Liberdata", limit: 10 },
   SUPPRI10: { label: "Suppri", limit: 10 },
+};
+
+const COUPON_CONTACTS = {
+  HASHTAG10: "adeusqm@gmail.com",
+  LIBERDATA10: "setormarketing.liber@gmail.com",
+  SUPPRI10: "pedro.maranhao@usesuppri.com.br",
 };
 
 const json = (status, body) =>
@@ -11,6 +18,48 @@ const json = (status, body) =>
     status,
     headers: { "Content-Type": "application/json" },
   });
+
+let cachedTransporter;
+
+function getTransporter() {
+  if (cachedTransporter !== undefined) return cachedTransporter;
+
+  const user = process.env.EMAIL;
+  const pass = process.env.SENHA;
+
+  cachedTransporter = user && pass
+    ? nodemailer.createTransport({ service: "gmail", auth: { user, pass } })
+    : null;
+
+  return cachedTransporter;
+}
+
+async function notifyResponsible(coupon, nome, empresa) {
+  const to = COUPON_CONTACTS[coupon];
+  const transporter = getTransporter();
+  if (!to || !transporter) return false;
+
+  try {
+    await transporter.sendMail({
+      from: process.env.EMAIL,
+      to,
+      subject: `Nova inscrição — Negócios à Mesa (${COUPONS[coupon].label})`,
+      text: [
+        `Nova inscrição via ${COUPONS[coupon].label}:`,
+        "",
+        `Nome: ${nome}`,
+        `Empresa: ${empresa || "não informado"}`,
+        "",
+        "Negócios à Mesa: Os Desafios da Gestão Eficiente no Food Service",
+        "29 de julho, 19h — Cabaña Del Primo",
+      ].join("\n"),
+    });
+    return true;
+  } catch (err) {
+    console.error(`Falha ao enviar email para ${to}:`, err.message);
+    return false;
+  }
+}
 
 export default async (req) => {
   if (req.method !== "POST") {
@@ -46,9 +95,11 @@ export default async (req) => {
   const next = current + 1;
   await store.set(countKey, String(next));
 
+  const emailSent = await notifyResponsible(coupon, nome, empresa);
+
   const listKey = `list-${coupon}`;
   const list = JSON.parse((await store.get(listKey)) || "[]");
-  list.push({ nome, empresa, ts: Date.now() });
+  list.push({ nome, empresa, ts: Date.now(), emailSent });
   await store.set(listKey, JSON.stringify(list));
 
   return json(200, {

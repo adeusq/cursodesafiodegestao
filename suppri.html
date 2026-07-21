@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Negócios à Mesa: Os Desafios da Gestão Eficiente no Food Service</title>
-<meta name="description" content="Negócios à Mesa: Os Desafios da Gestão Eficiente no Food Service, com Luciana Guedes (Grupo Geppos) e Tiago Diógenes (Menu Brands). 29 de julho, 19h, Cabaña Del Primo. Inscrição gratuita e limitada." />
+<title>Inscrição via Suppri — Negócios à Mesa</title>
+<meta name="description" content="Negócios à Mesa: Os Desafios da Gestão Eficiente no Food Service — vagas exclusivas para o público da Suppri. 29 de julho, 19h, Cabaña Del Primo. Inscrição gratuita e limitada a 10 vagas." />
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
 <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512.png">
@@ -13,11 +13,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-coupon="SUPPRI10">
 
 <header class="topbar">
   <span class="topbar__brand">Food Service · Gestão</span>
-  <a class="topbar__cta" href="#apoiadores">Garantir minha vaga</a>
+  <a class="topbar__cta" href="#inscricao">Garantir minha vaga</a>
 </header>
 
 <main>
@@ -44,12 +44,12 @@
           </div>
           <div>
             <dt><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8l8-4 8 4-8 4-8-4z"/><path d="M4 8v8l8 4 8-4V8"/></svg>Investimento</dt>
-            <dd>Gratuito &middot; vagas limitadas por cupom</dd>
+            <dd>Gratuito &middot; 10 vagas via Suppri</dd>
           </div>
         </dl>
       </div>
 
-      <a href="#apoiadores" class="btn btn--primary hero__cta">Quero minha vaga</a>
+      <a href="#inscricao" class="btn btn--primary hero__cta">Quero minha vaga</a>
     </div>
   </section>
 
@@ -86,51 +86,36 @@
     </div>
   </section>
 
-  <section class="section section--coupons" id="apoiadores">
-    <div class="section__inner">
-      <h2>Inscrição gratuita, vagas limitadas</h2>
-      <p class="section__lead">A entrada não tem custo, mas cada apoiador libera apenas <strong>10 vagas exclusivas</strong>. Inscreva-se pela página do apoiador que te trouxe até aqui.</p>
-
-      <div class="coupons" id="coupons">
-        <article class="coupon-card" data-coupon="HASHTAG10">
-          <div class="coupon-card__logo coupon-card__logo--hashtag">
-            <img src="assets/logo-hasteg.png" alt="Logo #hashtag entrega">
-          </div>
-          <div class="coupon-card__body">
-            <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="10" aria-label="Vagas usadas via #hashtag entrega">
-              <div class="progress__bar" data-bar></div>
-            </div>
-            <span class="coupon-card__remaining" data-remaining>carregando vagas…</span>
-          </div>
-          <a href="hashtag.html" class="btn btn--primary">Inscrever-se via #hashtag</a>
-        </article>
-
-        <article class="coupon-card" data-coupon="LIBERDATA10">
-          <div class="coupon-card__logo coupon-card__logo--liberdata">
-            <img src="assets/logo-liberdata.png" alt="Logo Liberdata">
-          </div>
-          <div class="coupon-card__body">
-            <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="10" aria-label="Vagas usadas via Liberdata">
-              <div class="progress__bar" data-bar></div>
-            </div>
-            <span class="coupon-card__remaining" data-remaining>carregando vagas…</span>
-          </div>
-          <a href="liberdata.html" class="btn btn--primary">Inscrever-se via Liberdata</a>
-        </article>
-
-        <article class="coupon-card" data-coupon="SUPPRI10">
-          <div class="coupon-card__logo coupon-card__logo--suppri">
-            <img src="assets/logo-suppri.png" alt="Logo Suppri">
-          </div>
-          <div class="coupon-card__body">
-            <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="10" aria-label="Vagas usadas via Suppri">
-              <div class="progress__bar" data-bar></div>
-            </div>
-            <span class="coupon-card__remaining" data-remaining>carregando vagas…</span>
-          </div>
-          <a href="suppri.html" class="btn btn--primary">Inscrever-se via Suppri</a>
-        </article>
+  <section class="section section--form" id="inscricao">
+    <div class="section__inner section__inner--narrow">
+      <div class="sponsor-badge">
+        <img src="assets/logo-suppri.png" alt="Logo Suppri">
       </div>
+      <h2>Vagas exclusivas via Suppri</h2>
+      <p class="section__lead">Entrada gratuita, limitada a <strong>10 vagas</strong> para o público da Suppri.</p>
+
+      <div class="sponsor-status">
+        <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="10" aria-label="Vagas usadas via Suppri">
+          <div class="progress__bar" data-bar></div>
+        </div>
+        <span class="coupon-card__remaining" data-remaining>carregando vagas…</span>
+      </div>
+
+      <form id="registration-form" novalidate>
+        <label class="field">
+          <span>Nome completo</span>
+          <input type="text" name="nome" id="nome" autocomplete="name" required>
+        </label>
+
+        <label class="field">
+          <span>Empresa</span>
+          <input type="text" name="empresa" id="empresa" autocomplete="organization">
+        </label>
+
+        <button type="submit" class="btn btn--primary" id="submit-btn">Confirmar inscrição</button>
+
+        <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+      </form>
     </div>
   </section>
 </main>
@@ -145,6 +130,6 @@
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script src="sponsor.js"></script>
 </body>
 </html>

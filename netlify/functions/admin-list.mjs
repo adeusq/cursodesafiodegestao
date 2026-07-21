@@ -22,7 +22,13 @@ export default async (req) => {
   for (const coupon of COUPONS) {
     const list = JSON.parse((await store.get(`list-${coupon}`)) || "[]");
     for (const entry of list) {
-      registrations.push({ nome: entry.nome, empresa: entry.empresa, coupon, ts: entry.ts });
+      registrations.push({
+        nome: entry.nome,
+        empresa: entry.empresa,
+        coupon,
+        ts: entry.ts,
+        emailSent: entry.emailSent,
+      });
     }
   }
 

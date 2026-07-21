@@ -2,7 +2,7 @@
   const STORAGE_KEY = "nm-admin-key";
   const COUPON_LABELS = {
     HASHTAG10: "#hashtag entrega",
-    LIBERDATA10: "LiberData",
+    LIBERDATA10: "Liberdata",
     SUPPRI10: "Suppri",
   };
 
@@ -149,10 +149,16 @@
           <td>${escapeHtml(r.empresa || "—")}</td>
           <td>${escapeHtml(COUPON_LABELS[r.coupon] || r.coupon)}</td>
           <td>${when}</td>
+          <td>${emailStatusLabel(r.emailSent)}</td>
         `;
         tableBody.appendChild(tr);
       });
     }
+  }
+
+  function emailStatusLabel(emailSent) {
+    if (emailSent === undefined) return "—";
+    return emailSent ? "✅ Enviado" : "❌ Falhou";
   }
 
   function escapeHtml(str) {
@@ -162,9 +168,15 @@
   }
 
   function toCsv(data) {
-    const rows = [["Nome", "Empresa", "Apoiador", "Inscrito em"]];
+    const rows = [["Nome", "Empresa", "Apoiador", "Inscrito em", "Email enviado"]];
     data.registrations.forEach((r) => {
-      rows.push([r.nome, r.empresa || "", COUPON_LABELS[r.coupon] || r.coupon, new Date(r.ts).toISOString()]);
+      rows.push([
+        r.nome,
+        r.empresa || "",
+        COUPON_LABELS[r.coupon] || r.coupon,
+        new Date(r.ts).toISOString(),
+        r.emailSent === undefined ? "" : r.emailSent ? "sim" : "não",
+      ]);
     });
     return rows.map((row) => row.map(csvEscape).join(",")).join("\r\n");
   }

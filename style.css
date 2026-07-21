@@ -428,6 +428,31 @@ a {
   background: var(--cream);
 }
 
+.section--form h2,
+.section--form .section__lead {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sponsor-badge {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.sponsor-badge img {
+  max-height: 3.5rem;
+  width: auto;
+}
+
+.sponsor-status {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
 form#registration-form {
   display: flex;
   flex-direction: column;
