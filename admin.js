@@ -37,9 +37,19 @@
   }
 
   async function loadData(key) {
-    const res = await fetch("/api/admin-list", {
-      headers: { "x-admin-key": key },
-    });
+    let res;
+    try {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 10000);
+      res = await fetch("/api/admin-list", {
+        headers: { "x-admin-key": key },
+        signal: controller.signal,
+      });
+      clearTimeout(timeout);
+    } catch (err) {
+      showGate("Falha de conexão ao verificar a chave. Tente novamente (desative bloqueadores/extensões se persistir).");
+      return;
+    }
 
     if (res.status === 401) {
       sessionStorage.removeItem(STORAGE_KEY);
@@ -52,7 +62,14 @@
       return;
     }
 
-    const data = await res.json();
+    let data;
+    try {
+      data = await res.json();
+    } catch (err) {
+      showGate("Resposta inesperada do servidor. Tente novamente.");
+      return;
+    }
+
     currentData = data;
     sessionStorage.setItem(STORAGE_KEY, key);
     render(data);
