@@ -538,6 +538,14 @@ form#registration-form {
   width: auto;
 }
 
+.footer__logos .footer__logo--hashtag {
+  height: 5.5rem;
+}
+
+.footer__logos .footer__logo--liberdata {
+  height: 2.6rem;
+}
+
 @media (max-width: 640px) {
   .ticket {
     flex-direction: column;
