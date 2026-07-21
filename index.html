@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Negócios à Mesa: Os Desafios da Gestão Eficiente no Food Service</title>
+<meta name="description" content="Negócios à Mesa: Os Desafios da Gestão Eficiente no Food Service, com Luciana Guedes (Grupo Geppos) e Tiago Diógenes (Menu Brands). 29 de julho, 19h, Cabaña Del Primo. Inscrição gratuita e limitada." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <span class="topbar__brand">Food Service · Gestão</span>
+  <a class="topbar__cta" href="#inscricao">Garantir minha vaga</a>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero__inner">
+      <p class="eyebrow">Evento presencial &middot; entrada gratuita</p>
+      <h1 class="hero__title">Negócios à Mesa<span class="hero__title-colon">:</span></h1>
+      <p class="hero__subtitle">Os Desafios da Gestão Eficiente no Food Service</p>
+
+      <div class="ticket">
+        <div class="ticket__date">
+          <span class="ticket__day">29</span>
+          <span class="ticket__month">JUL</span>
+        </div>
+        <div class="ticket__divider" aria-hidden="true"></div>
+        <dl class="ticket__details">
+          <div>
+            <dt><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/><circle cx="15.5" cy="15" r="2.6"/><path d="M15.5 13.6v1.6l1 .8"/></svg>Quando</dt>
+            <dd>Quarta-feira, 29 de julho de 2026 &middot; 19h</dd>
+          </div>
+          <div>
+            <dt><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12A7 7 0 0 0 5 10c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.4"/></svg>Onde</dt>
+            <dd>Cabaña Del Primo<br><span class="ticket__address">R. Maria Tomásia, 503 &ndash; Aldeota, Fortaleza</span></dd>
+          </div>
+          <div>
+            <dt><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8l8-4 8 4-8 4-8-4z"/><path d="M4 8v8l8 4 8-4V8"/></svg>Investimento</dt>
+            <dd>Gratuito &middot; vagas limitadas por cupom</dd>
+          </div>
+        </dl>
+      </div>
+
+      <a href="#inscricao" class="btn btn--primary hero__cta">Quero minha vaga</a>
+    </div>
+  </section>
+
+  <section class="section section--about">
+    <div class="section__inner section__inner--narrow">
+      <h2>Por que esse tema, agora</h2>
+      <p>Margem apertada, operação exigente e um consumidor cada vez mais consciente do que paga. Quem administra um negócio de food service sente essa pressão todos os dias — no financeiro, na cozinha e na construção da marca. Reunimos duas pessoas que lidam com esses desafios na prática para uma conversa direta sobre gestão eficiente no setor.</p>
+    </div>
+  </section>
+
+  <section class="section section--speakers">
+    <div class="section__inner">
+      <h2>Quem vai estar lá</h2>
+      <div class="speakers">
+        <article class="speaker-card">
+          <div class="speaker-card__photo-wrap">
+            <span class="speaker-card__tag speaker-card__tag--a">Luciana Guedes</span>
+            <div class="speaker-card__photo">
+              <img src="assets/luciana.jpg" alt="Foto de Luciana Guedes">
+            </div>
+          </div>
+          <p class="speaker-card__role">Gestora financeira do Grupo Geppos</p>
+        </article>
+        <article class="speaker-card">
+          <div class="speaker-card__photo-wrap">
+            <span class="speaker-card__tag speaker-card__tag--b">Tiago Diógenes</span>
+            <div class="speaker-card__photo">
+              <img src="assets/tiago.jpg" alt="Foto de Tiago Diógenes">
+            </div>
+          </div>
+          <p class="speaker-card__role">Fundador da Menu Brands</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--coupons">
+    <div class="section__inner">
+      <h2>Inscrição gratuita, vagas limitadas</h2>
+      <p class="section__lead">A entrada não tem custo, mas cada apoiador libera apenas <strong>10 vagas</strong>. Escolha um cupom abaixo para garantir a sua.</p>
+
+      <div class="coupons" id="coupons">
+        <article class="coupon-card" data-coupon="HASHTAG10">
+          <div class="coupon-card__logo coupon-card__logo--hashtag">
+            <img src="assets/logo-hasteg.png" alt="Logo #hashtag entrega">
+          </div>
+          <div class="coupon-card__body">
+            <span class="coupon-card__code">HASHTAG10</span>
+            <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="10" aria-label="Vagas usadas do cupom HASHTAG10">
+              <div class="progress__bar" data-bar></div>
+            </div>
+            <span class="coupon-card__remaining" data-remaining>carregando vagas…</span>
+          </div>
+          <button type="button" class="btn btn--outline" data-use-coupon>Usar este cupom</button>
+        </article>
+
+        <article class="coupon-card" data-coupon="LIBERDATA10">
+          <div class="coupon-card__logo coupon-card__logo--liberdata">
+            <img src="assets/logo-liberdata.png" alt="Logo LiberData">
+          </div>
+          <div class="coupon-card__body">
+            <span class="coupon-card__code">LIBERDATA10</span>
+            <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="10" aria-label="Vagas usadas do cupom LIBERDATA10">
+              <div class="progress__bar" data-bar></div>
+            </div>
+            <span class="coupon-card__remaining" data-remaining>carregando vagas…</span>
+          </div>
+          <button type="button" class="btn btn--outline" data-use-coupon>Usar este cupom</button>
+        </article>
+
+        <article class="coupon-card" data-coupon="SUPPRI10">
+          <div class="coupon-card__logo coupon-card__logo--suppri">
+            <img src="assets/logo-suppri.png" alt="Logo Suppri">
+          </div>
+          <div class="coupon-card__body">
+            <span class="coupon-card__code">SUPPRI10</span>
+            <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="10" aria-label="Vagas usadas do cupom SUPPRI10">
+              <div class="progress__bar" data-bar></div>
+            </div>
+            <span class="coupon-card__remaining" data-remaining>carregando vagas…</span>
+          </div>
+          <button type="button" class="btn btn--outline" data-use-coupon>Usar este cupom</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--form" id="inscricao">
+    <div class="section__inner section__inner--narrow">
+      <h2>Confirme sua inscrição</h2>
+      <p class="section__lead">Preencha os dados abaixo e selecione o cupom do apoiador que te trouxe até aqui.</p>
+
+      <form id="registration-form" novalidate>
+        <label class="field">
+          <span>Nome completo</span>
+          <input type="text" name="nome" id="nome" autocomplete="name" required>
+        </label>
+
+        <label class="field">
+          <span>Empresa</span>
+          <input type="text" name="empresa" id="empresa" autocomplete="organization">
+        </label>
+
+        <fieldset class="field field--coupon">
+          <legend>Cupom</legend>
+          <div class="coupon-pills" id="coupon-pills">
+            <label class="coupon-pill">
+              <input type="radio" name="coupon" value="HASHTAG10" required>
+              <span>HASHTAG10 <em data-pill-remaining="HASHTAG10"></em></span>
+            </label>
+            <label class="coupon-pill">
+              <input type="radio" name="coupon" value="LIBERDATA10" required>
+              <span>LIBERDATA10 <em data-pill-remaining="LIBERDATA10"></em></span>
+            </label>
+            <label class="coupon-pill">
+              <input type="radio" name="coupon" value="SUPPRI10" required>
+              <span>SUPPRI10 <em data-pill-remaining="SUPPRI10"></em></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <button type="submit" class="btn btn--primary" id="submit-btn">Confirmar inscrição</button>
+
+        <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <p class="footer__event">Negócios à Mesa: Os Desafios da Gestão Eficiente no Food Service &middot; 29/07 &middot; 19h &middot; Cabaña Del Primo</p>
+  <p class="footer__label">Apoio</p>
+  <div class="footer__logos">
+    <img src="assets/logo-hasteg.png" alt="Logo #hashtag entrega">
+    <img src="assets/logo-liberdata.png" alt="Logo LiberData">
+    <img src="assets/logo-suppri.png" alt="Logo Suppri">
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
