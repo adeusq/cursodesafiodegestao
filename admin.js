@@ -34,6 +34,7 @@
   function showPanel() {
     gate.hidden = true;
     panel.hidden = false;
+    window.scrollTo(0, 0);
   }
 
   async function loadData(key) {
