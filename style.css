@@ -558,6 +558,10 @@ form#registration-form {
   padding: 1.5rem;
 }
 
+.admin-gate[hidden] {
+  display: none;
+}
+
 .admin-gate__card {
   width: 100%;
   max-width: 22rem;
