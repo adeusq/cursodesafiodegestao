@@ -389,42 +389,6 @@ a {
   max-width: 9rem;
 }
 
-.progress {
-  height: 8px;
-  border-radius: 999px;
-  background: var(--line);
-  overflow: hidden;
-}
-
-.progress__bar {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, var(--cyan), var(--blue));
-  border-radius: inherit;
-  transition: width 0.4s ease;
-}
-
-.coupon-card__remaining {
-  font-size: 0.85rem;
-  color: var(--muted);
-  font-weight: 600;
-}
-
-.coupon-card.is-sold-out .coupon-card__remaining {
-  color: var(--danger);
-}
-
-.coupon-card.is-sold-out .progress__bar {
-  background: var(--danger);
-}
-
-.coupon-card.is-sold-out a.btn {
-  background: var(--line);
-  color: var(--muted);
-  box-shadow: none;
-  pointer-events: none;
-}
-
 .section--form {
   background: var(--cream);
 }
@@ -445,13 +409,6 @@ a {
 .sponsor-badge img {
   max-height: 3.5rem;
   width: auto;
-}
-
-.sponsor-status {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
 }
 
 form#registration-form {

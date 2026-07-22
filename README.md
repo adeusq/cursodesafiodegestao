@@ -10,19 +10,20 @@ Cada apoiador tem sua **própria página** com limite de **10 vagas**:
 | Liberdata | `/liberdata.html` | `LIBERDATA10` | `setormarketing.liber@gmail.com` |
 | Suppri | `/suppri.html` | `SUPPRI10` | `pedro.maranhao@usesuppri.com.br` |
 
-A página principal (`index.html`) funciona como um hub: mostra as vagas restantes de cada apoiador e leva para a página certa. Cada apoiador divulga só o link da sua própria página — não precisa mais de código.
+A página principal (`index.html`) funciona como um hub: só mostra a logo de cada apoiador e um botão que leva para a página certa. Cada apoiador divulga só o link da sua própria página — não precisa mais de código.
 
-A cada inscrição feita numa página, um **email automático** é enviado para o responsável daquele apoiador (nome + empresa da pessoa). O `/admin.html` mostra todas as inscrições juntas, de todos os apoiadores, incluindo se o email foi enviado com sucesso.
+**Nenhuma página pública mostra quantas vagas restam** — isso é só pro admin acompanhar. Se as 10 vagas de um apoiador já encheram, a pessoa só descobre ao tentar se inscrever (aparece a mensagem "as vagas esgotaram" depois de clicar em confirmar) — o limite continua sendo garantido de verdade no servidor, só não é mostrado antes.
+
+A cada inscrição feita numa página, um **email automático** é enviado para o responsável daquele apoiador (nome + empresa da pessoa). O `/admin.html` mostra todas as inscrições juntas, de todos os apoiadores, quantas vagas já foram usadas de cada um, e se o email foi enviado com sucesso.
 
 ## Estrutura
 
-- `index.html`, `style.css`, `script.js` — página hub (mostra vagas restantes de cada apoiador e linka pras páginas deles).
-- `hashtag.html`, `liberdata.html`, `suppri.html` + `sponsor.js` — página de inscrição dedicada de cada apoiador (mesmo conteúdo do evento, formulário só com Nome e Empresa, vagas daquele apoiador específico).
-- `admin.html`, `admin.js` — área restrita para ver todos os inscritos, status do email e exportar CSV.
+- `index.html`, `style.css` — página hub (logo + botão de cada apoiador, sem nenhuma contagem de vagas visível).
+- `hashtag.html`, `liberdata.html`, `suppri.html` + `sponsor.js` — página de inscrição dedicada de cada apoiador (mesmo conteúdo do evento, formulário só com Nome e Empresa).
+- `admin.html`, `admin.js` — área restrita pra ver todos os inscritos, quantas vagas restam por apoiador, status do email e exportar CSV.
 - `assets/` — logos dos apoiadores e fotos dos palestrantes.
 - `netlify/functions/register.mjs` — recebe a inscrição, valida o cupom, bloqueia quando bate 10, e envia o email de notificação pro responsável.
-- `netlify/functions/status.mjs` — retorna quantas vagas já foram usadas por cupom.
-- `netlify/functions/admin-list.mjs` — retorna nome/empresa/apoiador/status do email de todos os inscritos (exige a chave de admin).
+- `netlify/functions/admin-list.mjs` — retorna nome/empresa/apoiador/status do email de todos os inscritos (exige a chave de admin — as contagens por apoiador são calculadas a partir dessa lista).
 - `netlify/functions/admin-reset.mjs` — zera vagas e inscritos de um apoiador (ou de todos), para testes (exige a chave de admin).
 - Todas as funções usam **Netlify Blobs** (armazenamento embutido do Netlify) para guardar a contagem e a lista de inscritos — não precisa de banco de dados externo.
 
@@ -76,6 +77,6 @@ O `/admin.html` está bloqueado para buscadores via `robots.txt`, mas quem realm
 ## Ajustando depois
 
 - **Trocar o email de algum apoiador**: edite `COUPON_CONTACTS` em `netlify/functions/register.mjs`.
-- **Trocar os cupons ou o limite de 10 vagas**: edite o objeto/lista `COUPONS` em `netlify/functions/register.mjs`, `status.mjs` e `admin-*.mjs`, o mapa `COUPON_LABELS` em `admin.js`, e o `data-coupon` no `<body>` da página do apoiador correspondente.
+- **Trocar os cupons ou o limite de 10 vagas**: edite o objeto/lista `COUPONS` em `netlify/functions/register.mjs` e `admin-*.mjs`, o mapa `COUPON_LABELS` em `admin.js`, e o `data-coupon` no `<body>` da página do apoiador correspondente.
 - **Trocar textos, data, local**: está direto em cada `.html` (sem CMS) — repita a mudança em `index.html` e nas 3 páginas de apoiador.
 - **Cores e fontes**: variáveis no topo do `style.css` (`:root`) e os links de fonte no `<head>` de cada página (Baloo 2 + Nunito, Google Fonts).

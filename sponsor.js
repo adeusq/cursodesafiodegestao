@@ -1,38 +1,8 @@
 (() => {
-  const LIMIT = 10;
   const coupon = document.body.dataset.coupon;
-  const bar = document.querySelector("[data-bar]");
-  const remainingEl = document.querySelector("[data-remaining]");
   const form = document.getElementById("registration-form");
   const message = document.getElementById("form-message");
   const submitBtn = document.getElementById("submit-btn");
-
-  async function loadStatus() {
-    try {
-      const res = await fetch("/api/status");
-      if (!res.ok) return;
-      const data = await res.json();
-      const info = data[coupon];
-      if (!info) return;
-      updateDisplay(info);
-    } catch {
-      // silencioso: se a função ainda não estiver no ar, a página continua utilizável.
-    }
-  }
-
-  function updateDisplay(info) {
-    const usedPct = Math.min(100, (info.used / LIMIT) * 100);
-    bar.style.width = `${usedPct}%`;
-    bar.closest(".progress").setAttribute("aria-valuenow", info.used);
-
-    if (info.remaining <= 0) {
-      remainingEl.textContent = "Vagas esgotadas";
-      submitBtn.disabled = true;
-      submitBtn.textContent = "Vagas esgotadas";
-    } else {
-      remainingEl.textContent = `${info.remaining} de ${LIMIT} vagas disponíveis`;
-    }
-  }
 
   function setMessage(text, state) {
     message.textContent = text;
@@ -77,13 +47,8 @@
     } catch {
       setMessage("Falha de conexão. Tente novamente em instantes.", "error");
     } finally {
-      if (!submitBtn.textContent.includes("esgotadas")) {
-        submitBtn.disabled = false;
-        submitBtn.textContent = "Confirmar inscrição";
-      }
-      loadStatus();
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Confirmar inscrição";
     }
   });
-
-  loadStatus();
 })();
