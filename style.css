@@ -418,6 +418,13 @@ a {
   background: var(--danger);
 }
 
+.coupon-card.is-sold-out a.btn {
+  background: var(--line);
+  color: var(--muted);
+  box-shadow: none;
+  pointer-events: none;
+}
+
 .section--form {
   background: var(--cream);
 }

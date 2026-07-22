@@ -26,9 +26,13 @@
     const link = card.querySelector("a.btn");
     if (info.remaining <= 0) {
       card.classList.add("is-sold-out");
-      if (link) link.textContent = "Vagas esgotadas";
+      if (link) {
+        link.textContent = "Vagas esgotadas";
+        link.setAttribute("aria-disabled", "true");
+      }
     } else {
       card.classList.remove("is-sold-out");
+      if (link) link.removeAttribute("aria-disabled");
     }
   }
 
