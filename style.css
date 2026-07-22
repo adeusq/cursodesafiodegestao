@@ -389,12 +389,6 @@ a {
   max-width: 9rem;
 }
 
-.coupon-card__body {
-  display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
-}
-
 .progress {
   height: 8px;
   border-radius: 999px;
