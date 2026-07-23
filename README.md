@@ -2,17 +2,17 @@
 
 Site do evento **"Negócios à Mesa: Os Desafios da Gestão Eficiente no Food Service"** (29/07/2026, 19h, Cabaña Del Primo), com inscrição gratuita e vagas exclusivas por apoiador.
 
-Cada apoiador tem sua **própria página** com limite de **10 vagas**:
+Cada apoiador tem sua **própria página**, cada uma com seu próprio limite de vagas:
 
-| Apoiador | Página | Cupom interno | Email do responsável |
-|---|---|---|---|
-| #hashtag entrega | `/hashtag.html` | `HASHTAG10` | `davi.duarte@hashtagentrega.com` |
-| Liberdata | `/liberdata.html` | `LIBERDATA10` | `setormarketing.liber@gmail.com` |
-| Suppri | `/suppri.html` | `SUPPRI10` | `pedro.maranhao@usesuppri.com.br` |
+| Apoiador | Página | Cupom interno | Vagas | Email do responsável |
+|---|---|---|---|---|
+| #hashtag entrega | `/hashtag.html` | `HASHTAG10` | 10 | `davi.duarte@hashtagentrega.com` |
+| Liberdata | `/liberdata.html` | `LIBERDATA10` | 20 | `setormarketing.liber@gmail.com` |
+| Suppri | `/suppri.html` | `SUPPRI10` | 10 | `pedro.maranhao@usesuppri.com.br` |
 
 A página principal (`index.html`) funciona como um hub: só mostra a logo de cada apoiador e um botão que leva para a página certa. Cada apoiador divulga só o link da sua própria página — não precisa mais de código.
 
-**Nenhuma página pública mostra quantas vagas restam** — isso é só pro admin acompanhar. Se as 10 vagas de um apoiador já encheram, a pessoa só descobre ao tentar se inscrever (aparece a mensagem "as vagas esgotaram" depois de clicar em confirmar) — o limite continua sendo garantido de verdade no servidor, só não é mostrado antes.
+**Nenhuma página pública mostra quantas vagas restam** — isso é só pro admin acompanhar. Se as vagas de um apoiador já encheram, a pessoa só descobre ao tentar se inscrever (aparece a mensagem "as vagas esgotaram" depois de clicar em confirmar) — o limite continua sendo garantido de verdade no servidor, só não é mostrado antes.
 
 A cada inscrição feita numa página, um **email automático** é enviado para o responsável daquele apoiador (nome + empresa da pessoa). O `/admin.html` mostra todas as inscrições juntas, de todos os apoiadores, quantas vagas já foram usadas de cada um, e se o email foi enviado com sucesso.
 
@@ -77,6 +77,6 @@ O `/admin.html` está bloqueado para buscadores via `robots.txt`, mas quem realm
 ## Ajustando depois
 
 - **Trocar o email de algum apoiador**: edite `COUPON_CONTACTS` em `netlify/functions/register.mjs`.
-- **Trocar os cupons ou o limite de 10 vagas**: edite o objeto/lista `COUPONS` em `netlify/functions/register.mjs` e `admin-*.mjs`, o mapa `COUPON_LABELS` em `admin.js`, e o `data-coupon` no `<body>` da página do apoiador correspondente.
+- **Trocar os cupons ou o limite de vagas de algum apoiador**: edite o objeto `COUPONS` (`limit`) em `netlify/functions/register.mjs`, o mapa `COUPON_LIMITS` em `admin.js`, e o texto de "X vagas" na página `.html` daquele apoiador.
 - **Trocar textos, data, local**: está direto em cada `.html` (sem CMS) — repita a mudança em `index.html` e nas 3 páginas de apoiador.
 - **Cores e fontes**: variáveis no topo do `style.css` (`:root`) e os links de fonte no `<head>` de cada página (Baloo 2 + Nunito, Google Fonts).

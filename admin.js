@@ -6,6 +6,12 @@
     SUPPRI10: "Suppri",
   };
 
+  const COUPON_LIMITS = {
+    HASHTAG10: 10,
+    LIBERDATA10: 20,
+    SUPPRI10: 10,
+  };
+
   const gate = document.getElementById("gate");
   const gateForm = document.getElementById("gate-form");
   const gateMessage = document.getElementById("gate-message");
@@ -118,7 +124,7 @@
       const card = document.createElement("div");
       card.className = "admin-summary__card";
       card.innerHTML = `
-        <span class="admin-summary__value">${counts[coupon] || 0}/10</span>
+        <span class="admin-summary__value">${counts[coupon] || 0}/${COUPON_LIMITS[coupon]}</span>
         <span class="admin-summary__label">${COUPON_LABELS[coupon]}</span>
         <button type="button" class="admin-summary__reset" data-reset-coupon="${coupon}">Resetar</button>
       `;

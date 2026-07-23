@@ -3,7 +3,7 @@ import nodemailer from "nodemailer";
 
 const COUPONS = {
   HASHTAG10: { label: "#hashtag entrega", limit: 10 },
-  LIBERDATA10: { label: "Liberdata", limit: 10 },
+  LIBERDATA10: { label: "Liberdata", limit: 20 },
   SUPPRI10: { label: "Suppri", limit: 10 },
 };
 
